@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#1a1a2e">
+    <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Laude Dashboard 🎭</title>
-    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/modern.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>">
 </head>
 <body>
@@ -15,26 +18,36 @@
         <!-- Header -->
         <header class="app-header">
             <div class="header-content">
-                <h1>🎭 Laude</h1>
-                <span class="status-indicator" id="statusIndicator">● Online</span>
+                <div class="logo">
+                    <span class="emoji">🎭</span>
+                    <h1>Laude</h1>
+                </div>
+                <div class="status-badge">
+                    <span class="dot"></span>
+                    <span>Online</span>
+                </div>
             </div>
         </header>
 
         <!-- Stats Grid -->
-        <section class="stats-section">
+        <section class="stats-grid">
             <div class="stat-card">
+                <div class="stat-icon">📂</div>
                 <div class="stat-value" id="fileCount">27</div>
                 <div class="stat-label">Files</div>
             </div>
             <div class="stat-card">
+                <div class="stat-icon">🤖</div>
                 <div class="stat-value" id="activeAgents">0</div>
                 <div class="stat-label">Agents</div>
             </div>
             <div class="stat-card">
+                <div class="stat-icon">✅</div>
                 <div class="stat-value" id="tasksDone">4</div>
                 <div class="stat-label">Done</div>
             </div>
             <div class="stat-card">
+                <div class="stat-icon">📦</div>
                 <div class="stat-value" id="totalSize">68KB</div>
                 <div class="stat-label">Size</div>
             </div>
@@ -42,50 +55,50 @@
 
         <!-- Quick Actions -->
         <section class="actions-section">
-            <h2>⚡ Quick Actions</h2>
+            <h2 class="section-title">Quick Actions</h2>
             <div class="action-grid">
                 <button class="action-btn" onclick="spawnAgent()">
-                    <span class="btn-icon">🤖</span>
-                    <span>New Agent</span>
+                    <div class="btn-icon">🤖</div>
+                    <div class="btn-text">New Agent</div>
                 </button>
                 <button class="action-btn" onclick="generateReport()">
-                    <span class="btn-icon">📄</span>
-                    <span>Report</span>
+                    <div class="btn-icon">📄</div>
+                    <div class="btn-text">Report</div>
                 </button>
                 <button class="action-btn" onclick="checkHeartbeat()">
-                    <span class="btn-icon">💓</span>
-                    <span>Heartbeat</span>
+                    <div class="btn-icon">💓</div>
+                    <div class="btn-text">Heartbeat</div>
                 </button>
                 <button class="action-btn" onclick="viewTasks()">
-                    <span class="btn-icon">📋</span>
-                    <span>Tasks</span>
+                    <div class="btn-icon">📋</div>
+                    <div class="btn-text">Tasks</div>
                 </button>
             </div>
         </section>
 
         <!-- Recent Tasks -->
         <section class="tasks-section">
-            <h2>📋 Recent Tasks</h2>
+            <h2 class="section-title">Recent Tasks</h2>
             <div class="task-list" id="taskList">
                 <div class="task-item completed">
-                    <span class="task-status">✅</span>
-                    <div class="task-info">
+                    <div class="task-icon">✅</div>
+                    <div class="task-content">
                         <div class="task-title">Setup Identity Files</div>
-                        <div class="task-time">01:08</div>
+                        <div class="task-meta">01:08 • Completed</div>
                     </div>
                 </div>
                 <div class="task-item failed">
-                    <span class="task-status">❌</span>
-                    <div class="task-info">
+                    <div class="task-icon">❌</div>
+                    <div class="task-content">
                         <div class="task-title">Weather Check (Kolkata)</div>
-                        <div class="task-time">01:10</div>
+                        <div class="task-meta">01:10 • Failed</div>
                     </div>
                 </div>
                 <div class="task-item completed">
-                    <span class="task-status">✅</span>
-                    <div class="task-info">
+                    <div class="task-icon">✅</div>
+                    <div class="task-content">
                         <div class="task-title">Create Dashboard UI</div>
-                        <div class="task-time">01:15</div>
+                        <div class="task-meta">01:15 • Completed</div>
                     </div>
                 </div>
             </div>
@@ -94,20 +107,20 @@
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
             <button class="nav-btn active" onclick="showSection('home')">
-                <span>🏠</span>
-                <span>Home</span>
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
             </button>
             <button class="nav-btn" onclick="showSection('agents')">
-                <span>🤖</span>
-                <span>Agents</span>
+                <span class="nav-icon">🤖</span>
+                <span class="nav-label">Agents</span>
             </button>
             <button class="nav-btn" onclick="showSection('tasks')">
-                <span>📋</span>
-                <span>Tasks</span>
+                <span class="nav-icon">📋</span>
+                <span class="nav-label">Tasks</span>
             </button>
             <button class="nav-btn" onclick="showSection('settings')">
-                <span>⚙️</span>
-                <span>Settings</span>
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-label">Settings</span>
             </button>
         </nav>
     </div>
